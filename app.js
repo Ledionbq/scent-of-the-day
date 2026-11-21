@@ -1,6 +1,6 @@
 /* Scent of the Day – UI */
 
-const STORE = { collection: 'sotd_v1_collection', log: 'sotd_v1_log', occasion: 'sotd_v1_occasion' };
+const STORE = { collection: 'sotd_v1_collection', log: 'sotd_v1_log', occasion: 'sotd_v1_occasion', removed: 'sotd_v1_removed' };
 
 function loadJSON(key, fallback) {
   try {
@@ -14,9 +14,30 @@ function saveJSON(key, value) {
   try { localStorage.setItem(key, JSON.stringify(value)); } catch (e) { /* privater Modus: ignorieren */ }
 }
 
+const clone = (x) => JSON.parse(JSON.stringify(x));
+
+/* Sammlung laden: Standard-Düfte kommen immer aus der aktuellen data.js,
+ * außer du hast sie selbst bearbeitet (edited) oder entfernt (removed).
+ * Eigene Düfte bleiben erhalten. */
+function loadCollection() {
+  const stored = loadJSON(STORE.collection, null);
+  const removed = new Set(loadJSON(STORE.removed, []));
+  const byId = new Map((stored || []).map((s) => [s.id, s]));
+  const out = [];
+  DEFAULT_SCENTS.forEach((d) => {
+    if (removed.has(d.id)) return;
+    const own = byId.get(d.id);
+    out.push(own && own.edited ? own : clone(d));
+    byId.delete(d.id);
+  });
+  byId.forEach((s) => out.push(s));
+  return out;
+}
+
 const state = {
   view: 'heute',
-  scents: loadJSON(STORE.collection, null) || JSON.parse(JSON.stringify(DEFAULT_SCENTS)),
+  scents: loadCollection(),
+  removed: loadJSON(STORE.removed, []),
   log: loadJSON(STORE.log, {}),
   occasion: loadJSON(STORE.occasion, 'ausgehen'),
   weather: null,
@@ -33,6 +54,7 @@ function persist() {
   saveJSON(STORE.collection, state.scents);
   saveJSON(STORE.log, state.log);
   saveJSON(STORE.occasion, state.occasion);
+  saveJSON(STORE.removed, state.removed);
 }
 
 function findScent(id) { return state.scents.find((s) => s.id === id); }
@@ -118,7 +140,7 @@ function renderHeute() {
       </div>
       <div class="notes">
         ${s.notes.top.length ? `<div class="row"><b>Kopf</b><span>${esc(s.notes.top.join(', '))}</span></div>` : ''}
-        ${s.notes.heart.length ? `<div class="row"><b>Herz</b><span>${esc(s.notes.heart.join(', '))}</span></div>` : ''}
+        ${s.notes.heart.length ? `<div class="row"><b>${s.notes.top.length || s.notes.base.length ? 'Herz' : 'Noten'}</b><span>${esc(s.notes.heart.join(', '))}</span></div>` : ''}
         ${s.notes.base.length ? `<div class="row"><b>Basis</b><span>${esc(s.notes.base.join(', '))}</span></div>` : ''}
       </div>
       <button class="btn ${worn === s.id ? 'done' : 'primary'}" data-wear="${s.id}">
@@ -456,7 +478,7 @@ document.addEventListener('click', (e) => {
       state.scents.push(data);
     } else {
       const s = findScent(save.dataset.save);
-      Object.assign(s, data);
+      Object.assign(s, data, { edited: true });
     }
     persist(); closeSheet(); toast('Gespeichert'); return render();
   }
@@ -466,6 +488,7 @@ document.addEventListener('click', (e) => {
     const s = findScent(rem.dataset.remove);
     if (confirm(`„${displayName(s)}“ aus der Sammlung entfernen? Einträge im Tagebuch bleiben erhalten.`)) {
       state.scents = state.scents.filter((x) => x.id !== s.id);
+      if (DEFAULT_SCENTS.some((d) => d.id === s.id) && !state.removed.includes(s.id)) state.removed.push(s.id);
       persist(); closeSheet(); toast('Entfernt'); render();
     }
     return;
@@ -474,7 +497,9 @@ document.addEventListener('click', (e) => {
   const reset = t.closest('[data-reset]');
   if (reset) {
     if (confirm('Standard-Sammlung wiederherstellen? Eigene Änderungen werden überschrieben (Tagebuch bleibt).')) {
-      state.scents = JSON.parse(JSON.stringify(DEFAULT_SCENTS));
+      const own = state.scents.filter((x) => !DEFAULT_SCENTS.some((d) => d.id === x.id));
+      state.scents = clone(DEFAULT_SCENTS).concat(own);
+      state.removed = [];
       persist(); toast('Standard wiederhergestellt'); render();
     }
     return;
