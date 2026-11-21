@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Scent of the Day</title>
+  <meta name="description" content="Dein Duft des Tages – passend zu Wetter und Anlass.">
+  <meta name="theme-color" content="#000000">
+  <meta name="color-scheme" content="dark">
+
+  <!-- iPhone: Vollbild-Modus vom Home-Bildschirm -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Scent">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icons/icon-180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="bg" aria-hidden="true"></div>
+  <main id="app"></main>
+
+  <nav class="tabbar glass" aria-label="Hauptnavigation">
+    <button data-view="heute" class="on"><span class="ti">✦</span>Heute</button>
+    <button data-view="tagebuch"><span class="ti">▦</span>Tagebuch</button>
+    <button data-view="sammlung"><span class="ti">◉</span>Sammlung</button>
+    <button data-view="statistik"><span class="ti">▲</span>Statistik</button>
+  </nav>
+
+  <div class="sheet-wrap" id="sheetWrap">
+    <div class="sheet glass" id="sheet" role="dialog" aria-modal="true"></div>
+  </div>
+  <div class="toast glass" id="toast" role="status"></div>
+
+  <script src="data.js"></script>
+  <script src="engine.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
