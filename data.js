@@ -50,7 +50,7 @@ const DEFAULT_SCENTS = [
     color: '#2a2216', favorite: false, spray: false, verified: false,
   },
   {
-    id: 'hibiscus', brand: '', name: 'Hibiscus Mahajad', family: 'Fruchtig & Süß',
+    id: 'hibiscus', brand: 'Maison Crivelli', name: 'Hibiscus Mahajad', family: 'Fruchtig & Süß',
     intensity: 3, temp: [12, 28], occasions: ['uni', 'ausgehen', 'chillen', 'familie'], tags: ['frucht', 'süß'],
     notes: { top: ['Hibiskus', 'Beeren'], heart: ['Rose'], base: ['Moschus'] },
     color: '#4a0f22', favorite: true, spray: false, verified: false,
@@ -128,13 +128,13 @@ const DEFAULT_SCENTS = [
     color: '#0f3a3a', favorite: false, spray: false, verified: false,
   },
   {
-    id: 'blondeAmber', brand: '', name: 'Blonde Amber', family: 'Amber & Oud',
+    id: 'blondeAmber', brand: 'Clive Christian', name: 'Blonde Amber', family: 'Amber & Oud',
     intensity: 3, temp: [0, 16], occasions: ['date', 'familie', 'chillen'], tags: ['amber', 'vanille'],
     notes: { top: [], heart: [], base: ['Amber'] },
     color: '#4a3010', favorite: false, spray: false, verified: false,
   },
   {
-    id: 'orangeFlamingo', brand: '', name: 'Orange Flamingo', family: 'Frisch & Zitrus',
+    id: 'orangeFlamingo', brand: 'Marc-Gebauer', name: 'Orange Flamingo', family: 'Frisch & Zitrus',
     intensity: 3, temp: [16, 30], occasions: ['uni', 'familie', 'chillen'], tags: ['frucht', 'frisch'],
     notes: { top: ['Orange'], heart: [], base: [] },
     color: '#5a2a00', favorite: false, spray: false, verified: false,
@@ -152,7 +152,7 @@ const DEFAULT_SCENTS = [
     color: '#2a1a0c', favorite: false, spray: false, verified: false,
   },
   {
-    id: 'paragon', brand: '', name: 'Paragon', family: 'Würzig & Holzig',
+    id: 'paragon', brand: 'Initio', name: 'Paragon', family: 'Würzig & Holzig',
     intensity: 3, temp: [5, 20], occasions: ['uni', 'chillen', 'familie'], tags: [],
     notes: { top: [], heart: [], base: [] },
     color: '#1f2a3a', favorite: false, spray: false, verified: false,
@@ -174,5 +174,35 @@ const DEFAULT_SCENTS = [
     intensity: 5, temp: [-5, 12], occasions: ['ausgehen', 'date'], tags: ['oud', 'amber', 'süß'],
     notes: { top: ['Muskatnuss', 'Kardamom', 'Safran'], heart: ['Osmanthus', 'Jasmin', 'türkische Rose'], base: ['Leder', 'Oud', 'Tonka', 'Patchouli', 'Zeder'] },
     color: '#3a1f0a', favorite: false, spray: false, verified: true,
+  },
+  {
+    id: 'pacificChill', brand: 'Louis Vuitton', name: 'Pacific Chill', family: 'Frisch & Zitrus',
+    intensity: 3, temp: [14, 28], occasions: ['uni', 'chillen', 'familie'], tags: ['frisch'],
+    notes: { top: [], heart: [], base: [] },
+    color: '#0f3a46', favorite: false, spray: false, verified: false,
+  },
+  {
+    id: 'stronger', brand: 'Giorgio Armani', name: 'Emporio Armani Stronger With You Amber', family: 'Amber & Oud',
+    intensity: 4, temp: [-5, 15], occasions: ['date', 'ausgehen'], tags: ['amber', 'süß', 'vanille'],
+    notes: { top: [], heart: [], base: [] },
+    color: '#3a2412', favorite: false, spray: false, verified: false,
+  },
+  {
+    id: 'velvetTonka', brand: 'BDK Parfums', name: 'Velvet Tonka', family: 'Gourmand & Boozy',
+    intensity: 4, temp: [0, 15], occasions: ['date', 'chillen'], tags: ['süß', 'vanille'],
+    notes: { top: [], heart: [], base: ['Tonka'] },
+    color: '#3a2a1c', favorite: false, spray: false, verified: false,
+  },
+  {
+    id: 'tobaccoVanille', brand: 'Tom Ford', name: 'Tobacco Vanille', family: 'Gourmand & Boozy',
+    intensity: 4, temp: [-5, 15], occasions: ['ausgehen', 'date', 'chillen'], tags: ['süß', 'vanille'],
+    notes: { top: [], heart: [], base: ['Vanille', 'Tabak'] },
+    color: '#3a2010', favorite: false, spray: false, verified: false,
+  },
+  {
+    id: 'jeanLoweNoir', brand: 'Maison Alhambra', name: 'Jean Lowe Noir (Dupe Ombre Nomade)', family: 'Amber & Oud',
+    intensity: 4, temp: [-5, 12], occasions: ['ausgehen', 'date'], tags: ['oud'],
+    notes: { top: [], heart: [], base: [] },
+    color: '#2a1a0c', favorite: false, spray: false, verified: false,
   },
 ];
