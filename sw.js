@@ -1,6 +1,6 @@
 // Scent of the Day – Service Worker
 // Strategie: Netz zuerst (damit Updates sofort ankommen), Cache nur als Fallback offline.
-const CACHE = 'scent-v3';
+const CACHE = 'scent-v4';
 const SHELL = ['./', './index.html', './styles.css', './data.js', './engine.js', './app.js',
   './manifest.webmanifest', './icons/icon-180.png', './icons/icon-192.png', './icons/icon-512.png'];
 

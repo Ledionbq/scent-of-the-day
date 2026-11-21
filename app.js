@@ -30,7 +30,7 @@ function loadCollection() {
     out.push(own && own.edited ? own : clone(d));
     byId.delete(d.id);
   });
-  byId.forEach((s) => out.push(s));
+  byId.forEach((s) => { if (!RETIRED_IDS.includes(s.id)) out.push(s); });
   return out;
 }
 

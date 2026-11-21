@@ -34,6 +34,9 @@ const TAG_OPTIONS = [
   { id: 'weihrauch', label: 'Weihrauch ⚠︎' },
 ];
 
+// Früher in der Standard-Sammlung, inzwischen entfernt (werden auch aus gespeicherten Sammlungen gelöscht)
+const RETIRED_IDS = ['elusa', 'cactusGarden'];
+
 const LIKED_TAGS = ['süß', 'boozy', 'oud', 'amber', 'frucht', 'vanille'];
 
 const DEFAULT_SCENTS = [
@@ -116,16 +119,10 @@ const DEFAULT_SCENTS = [
     color: '#352010', favorite: false, spray: false, verified: true,
   },
   {
-    id: 'maracuja', brand: '', name: 'Oud Maracuja (Dupe)', family: 'Fruchtig & Süß',
-    intensity: 3, temp: [10, 26], occasions: ['ausgehen', 'chillen', 'uni'], tags: ['frucht', 'oud', 'süß'],
-    notes: { top: ['Maracuja'], heart: ['Beeren'], base: ['Oud', 'Vanille'] },
-    color: '#4a2a0c', favorite: false, spray: false, verified: false,
-  },
-  {
-    id: 'elusa', brand: '', name: 'Elusa 432', family: 'Frisch & Zitrus',
-    intensity: 3, temp: [14, 28], occasions: ['uni', 'chillen', 'familie'], tags: ['frisch'],
-    notes: { top: [], heart: [], base: [] },
-    color: '#0f3a3a', favorite: false, spray: false, verified: false,
+    id: 'maracuja', brand: 'Maison Crivelli', name: 'Oud Maracujá', family: 'Amber & Oud',
+    intensity: 4, temp: [0, 18], occasions: ['ausgehen', 'date', 'chillen'], tags: ['frucht', 'oud', 'vanille'],
+    notes: { top: [], heart: ['Passionsfrucht', 'Leder', 'Oud', 'Akigalawood', 'Safran', 'Siam-Benzoe', 'spanische Zistrose', 'türkische Rose', 'indonesisches Patchouli', 'Vanille'], base: [] },
+    color: '#4a2a0c', favorite: false, spray: false, verified: true,
   },
   {
     id: 'blondeAmber', brand: 'Clive Christian', name: 'Blonde Amber', family: 'Amber & Oud',
@@ -177,9 +174,9 @@ const DEFAULT_SCENTS = [
   },
   {
     id: 'pacificChill', brand: 'Louis Vuitton', name: 'Pacific Chill', family: 'Frisch & Zitrus',
-    intensity: 3, temp: [14, 28], occasions: ['uni', 'chillen', 'familie'], tags: ['frisch'],
-    notes: { top: [], heart: [], base: [] },
-    color: '#0f3a46', favorite: false, spray: false, verified: false,
+    intensity: 3, temp: [16, 30], occasions: ['uni', 'chillen', 'familie'], tags: ['frisch', 'frucht'],
+    notes: { top: [], heart: ['Aprikose', 'Pfefferminze', 'Orange', 'Zitronatzitrone', 'Zitrone', 'Ambrettesamen', 'Basilikum', 'Dattel', 'Feige', 'Koriandersamen', 'Möhrensamen', 'Rose de Mai', 'Schwarze Johannisbeere'], base: [] },
+    color: '#0f3a46', favorite: false, spray: false, verified: true,
   },
   {
     id: 'stronger', brand: 'Giorgio Armani', name: 'Emporio Armani Stronger With You Amber', family: 'Amber & Oud',
@@ -210,11 +207,5 @@ const DEFAULT_SCENTS = [
     intensity: 3, temp: [14, 30], occasions: ['uni', 'familie', 'chillen'], tags: ['frisch'],
     notes: { top: [], heart: ['chinesischer schwarzer Tee', 'kalabrische Bergamotte', 'Ambrox', 'nigerianischer Ingwer', 'Ceylon-Zimt', 'sizilianische Zeder', 'tunesisches Neroli'], base: [] },
     color: '#16384a', favorite: false, spray: false, verified: true,
-  },
-  {
-    id: 'cactusGarden', brand: 'Louis Vuitton', name: 'Cactus Garden', family: 'Frisch & Zitrus',
-    intensity: 3, temp: [18, 32], occasions: ['uni', 'familie', 'chillen'], tags: ['frisch', 'weihrauch'],
-    notes: { top: [], heart: ['Zitronengras', 'kalabrische Bergamotte', 'Mate', 'Rosengeranie', 'Weihrauch'], base: [] },
-    color: '#1d3a24', favorite: false, spray: false, verified: true,
   },
 ];
